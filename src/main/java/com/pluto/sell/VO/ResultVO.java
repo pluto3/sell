@@ -1,4 +1,4 @@
-package com.pluto.sell.vo;
+package com.pluto.sell.VO;
 
 import lombok.Data;
 

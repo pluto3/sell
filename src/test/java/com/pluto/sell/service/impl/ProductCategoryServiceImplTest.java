@@ -1,6 +1,7 @@
 package com.pluto.sell.service.impl;
 
 import com.pluto.sell.dataobject.ProductCategory;
+import com.pluto.sell.service.CategoryService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,32 +21,31 @@ import java.util.List;
 @SpringBootTest
 public class ProductCategoryServiceImplTest {
     @Autowired
-    private CategoryServiceImpl productCategoryService;
+    private CategoryService categoryService;
     @Test
     public void findOne() throws Exception {
-        ProductCategory productCategory = productCategoryService.findOne(5);
+        ProductCategory productCategory = categoryService.findOne(5);
         Assert.assertEquals(new Integer(5),productCategory.getCategoryId());
     }
 
     @Test
     public void findAll() throws Exception {
-        List<ProductCategory> productCategoryList = productCategoryService.findAll();
+        List<ProductCategory> productCategoryList = categoryService.findAll();
         Assert.assertNotEquals(0,productCategoryList.size());
     }
 
     @Test
     public void findByCategoryTypeIn() throws Exception {
-        List<ProductCategory> productCategoryList = productCategoryService.findByCategoryTypeIn(Arrays.asList(1,2,3,4));
+        List<ProductCategory> productCategoryList = categoryService.findByCategoryTypeIn(Arrays.asList(1,2,3,4));
         Assert.assertNotEquals(0,productCategoryList.size());
     }
 
     @Test
-    @Transactional
     public void save() throws Exception {
         ProductCategory productCategory = new ProductCategory();
-        productCategory.setCategoryType(23);
-        productCategory.setCategoryName("冷菜");
-        ProductCategory result = productCategoryService.save(productCategory);
+        productCategory.setCategoryType(4);
+        productCategory.setCategoryName("面条");
+        ProductCategory result = categoryService.save(productCategory);
         Assert.assertNotNull(result);
     }
 

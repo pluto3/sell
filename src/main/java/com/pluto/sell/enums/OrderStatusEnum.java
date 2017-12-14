@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
+ * 订单状态
  * Create By wangkai
  * 2017/11/23 21:23
  */

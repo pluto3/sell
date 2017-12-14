@@ -1,14 +1,13 @@
-package com.pluto.sell.dataobject;
+package com.pluto.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.pluto.sell.dataobject.OrderDetail;
 import com.pluto.sell.enums.OrderStatusEnum;
 import com.pluto.sell.enums.PayStatusEnum;
+import com.pluto.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -16,14 +15,14 @@ import java.util.List;
 /**
  * 订单
  * Create By wangkai
- * 2017/11/23 21:14
+ * 2017/11/26 20:50
  */
-@Entity
 @Data
-@DynamicUpdate//动态更新
-public class OrderMaster {
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)过时
+//@JsonInclude(JsonInclude.Include.NON_NULL)可以全局配置
+
+public class OrderDTO {
     /** 订单id. */
-    @Id
     private String orderId;
     /** 买家名字. */
     private String buyerName;
@@ -40,11 +39,11 @@ public class OrderMaster {
     /** 支付状态，默认0未支付. */
     private Integer payStatus= PayStatusEnum.WAIT.getCode();
     /** 创建时间. */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
     /** 修改时间. */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
-
-    @Transient
+    /** 订单详情集合 .*/
     private List<OrderDetail> orderDetailList;
-
 }

@@ -1,4 +1,4 @@
-package com.pluto.sell.vo;
+package com.pluto.sell.VO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

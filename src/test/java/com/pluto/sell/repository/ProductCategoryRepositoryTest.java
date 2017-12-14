@@ -27,9 +27,9 @@ public class ProductCategoryRepositoryTest {
     }
 
     @Test
-    @Transactional//数据库不保留数据
     public void save(){
-        ProductCategory productCategory =productCategoryRepository.findOne(2);
+        //ProductCategory productCategory =productCategoryRepository.findOne(2);
+        ProductCategory productCategory = new ProductCategory();
         productCategory.setCategoryId(2);
         productCategory.setCategoryName("消淤化痰");
         productCategory.setCategoryType(3);
@@ -37,6 +37,7 @@ public class ProductCategoryRepositoryTest {
         //Assert.assertNotEquals(null,result);
         Assert.assertNotNull(result);
     }
+
     @Test
     public void findByCategoryTypeInTest(){
         List<Integer> list = Arrays.asList(2,3,4);

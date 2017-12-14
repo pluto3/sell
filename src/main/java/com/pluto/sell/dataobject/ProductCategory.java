@@ -12,11 +12,8 @@ import javax.persistence.Id;
  * Create By wangkai
  * 2017/11/20 20:47
  */
-//@Table(name = "ProductCategory")
 @Entity
-
-@Data//getter与setter。。。方法
-//@NoArgsConstructor//无参构造方法
+@Data
 public class ProductCategory {
     /**
      * 类目id.
