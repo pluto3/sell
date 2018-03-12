@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * 购物车
+ * 购物车 传输对象
  * Create By wangkai
  * 2017/11/26 21:57
  */
