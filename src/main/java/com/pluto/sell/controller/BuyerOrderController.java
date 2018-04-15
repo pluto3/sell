@@ -24,9 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Create By wangkai
- * 2017/12/3 10:33
+ * @author wangkai
+ * @date  2017/12/3 10:33
  */
+@SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/buyer/order")
 @Slf4j
@@ -37,7 +38,7 @@ public class BuyerOrderController {
     @Autowired
     private BuyerService buyerService;
 
-    //创建订单
+    /**创建订单*/
     @PostMapping("/create")
     public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -50,11 +51,11 @@ public class BuyerOrderController {
             throw new SellException(ResultEnum.CART_EMPTY);
         }
         OrderDTO createResult = orderService.create(orderDTO);
-        Map<String, String> map = new HashMap();
+        Map<String, String> map = new HashMap(16);
         map.put("orderId",createResult.getOrderId());
         return ResultVOUtil.success(map);
     }
-    //订单列表
+    /**订单列表*/
     @GetMapping("/list")
     public ResultVO<List<OrderDTO>> list(@RequestParam("openid")String openid,
                                          @RequestParam(value = "page",defaultValue = "0")Integer page,
@@ -68,14 +69,14 @@ public class BuyerOrderController {
 
         return ResultVOUtil.success(orderDTOPage.getContent());
     }
-    //订单详情
+    /**订单详情*/
     @GetMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid")String openid,
                                      @RequestParam("orderId")String orderId){
         OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
         return ResultVOUtil.success(orderDTO);
     }
-    //取消订单
+    /**取消订单*/
     @PostMapping("/cancel")
     public ResultVO cancel(@RequestParam("openid")String openid,
                              @RequestParam("orderId")String orderId){

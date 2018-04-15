@@ -17,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 /**
- * Create By wangkai
- * 2017/12/7 11:04
+ * @author wangkai
+ * @date 2017/12/7 11:04
  */
 @Controller
 @RequestMapping("/seller/order")
@@ -76,7 +76,7 @@ public class SellerOrderController {
      */
     @GetMapping(value = "/detail")
     public ModelAndView detail(@RequestParam("orderId") String orderId, Map<String, Object> map){
-        OrderDTO orderDTO = null;
+        OrderDTO orderDTO;
         try {
             orderDTO = orderService.findOne(orderId);
         } catch (Exception e) {

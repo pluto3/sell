@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 
 /**
  * 买家商品
- * Create By wangkai
- * 2017/11/21 18:43
+ * @author Create By wangkai
+ * @date 2017/11/21 18:43
  */
 @RestController
 @RequestMapping("/buyer/product")
