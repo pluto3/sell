@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * 买家商品
- * @author Create By wangkai
+ * @author wangkai
  * @date 2017/11/21 18:43
  */
 @RestController

@@ -16,8 +16,8 @@ import java.util.List;
 
 /**
  * 订单 传输对象
- * Create By wangkai
- * 2017/11/26 20:50
+ * @author wangkai
+ * @date 2017/11/26 20:50
  */
 @Data
 //@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)过时

@@ -3,8 +3,8 @@ package com.pluto.sell.utils;
 import com.pluto.sell.VO.ResultVO;
 
 /**
- * Create By wangkai
- * 2017/11/21 20:38
+ * @author wangkai
+ * @date 2017/11/21 20:38
  */
 public class ResultVOUtil {
 

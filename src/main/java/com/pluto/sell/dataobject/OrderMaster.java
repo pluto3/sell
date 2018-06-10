@@ -15,12 +15,12 @@ import java.util.List;
 
 /**
  * 订单
- * Create By wangkai
- * 2017/11/23 21:14
+ * @author wangkai
+ * @date 2017/11/23 21:14
  */
 @Entity
 @Data
-@DynamicUpdate//动态更新
+@DynamicUpdate
 public class OrderMaster {
     /** 订单id. */
     @Id

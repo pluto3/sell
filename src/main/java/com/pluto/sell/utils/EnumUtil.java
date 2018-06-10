@@ -3,8 +3,8 @@ package com.pluto.sell.utils;
 import com.pluto.sell.enums.CodeEnum;
 
 /**
- * Create By wangkai
- * 2017/12/25 11:50
+ * @author wangkai
+ * @date 2017/12/25 11:50
  */
 public class EnumUtil {
     public static <T extends CodeEnum> T getByCode(Integer code, Class<T> enumClass) {

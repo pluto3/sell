@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Create By wangkai
- * 2017/11/20 22:01
+ * @author wangkai
+ * @date 2017/11/20 22:01
  */
 @Service
 public class ProductServiceImpl implements ProductService {

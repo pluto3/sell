@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 
 /**
  * 商品详情
- * Create By wangkai
- * 2017/11/21 19:33
+ * @author wangkai
+ * @date 2017/11/21 19:33
  */
 @Data
 public class ProductInfoVO {

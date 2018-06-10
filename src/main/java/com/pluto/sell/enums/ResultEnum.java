@@ -5,8 +5,8 @@ import lombok.Getter;
 
 /**
  * 结果异常状态
- * Create By wangkai
- * 2017/11/26 21:06
+ * @author wangkai
+ * @date 2017/11/26 21:06
  */
 @Getter
 @AllArgsConstructor

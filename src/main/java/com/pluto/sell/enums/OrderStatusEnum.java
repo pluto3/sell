@@ -5,8 +5,8 @@ import lombok.Getter;
 
 /**
  * 订单状态
- * Create By wangkai
- * 2017/11/23 21:23
+ * @author wangkai
+ * @date 2017/11/23 21:23
  */
 @Getter
 @AllArgsConstructor

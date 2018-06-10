@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 
 /**
  * 商品
- * Create By wangkai
- * 2017/11/20 20:47
+ * @author wangkai
+ * @date 2017/11/20 20:47
  */
 @Entity
 @Data

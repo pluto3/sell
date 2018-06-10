@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Create By wangkai
- * 2017/11/23 21:42
+ * @author wangkai
+ * @date 2017/11/23 21:42
  */
 public interface OrderMasterRepository extends JpaRepository<OrderMaster,String> {
     Page<OrderMaster> findByBuyerOpenid(String buyerOpenid, Pageable pageable);

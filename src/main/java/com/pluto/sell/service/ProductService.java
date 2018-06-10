@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Create By wangkai
- * 2017/11/20 21:49
+ * @author wangkai
+ * @date 2017/11/20 21:49
  */
 @Service
 public interface ProductService {

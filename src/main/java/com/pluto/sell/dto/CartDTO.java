@@ -5,8 +5,8 @@ import lombok.Data;
 
 /**
  * 购物车 传输对象
- * Create By wangkai
- * 2017/11/26 21:57
+ * @author wangkai
+ * @date 2017/11/26 21:57
  */
 @Data
 @AllArgsConstructor

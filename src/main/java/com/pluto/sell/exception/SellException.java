@@ -3,8 +3,8 @@ package com.pluto.sell.exception;
 import com.pluto.sell.enums.ResultEnum;
 
 /**
- * Create By wangkai
- * 2017/11/26 21:05
+ * @author wangkai
+ * @date 2017/11/26 21:05
  */
 public class SellException extends RuntimeException {
     private Integer code;

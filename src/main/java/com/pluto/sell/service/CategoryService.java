@@ -4,6 +4,9 @@ import com.pluto.sell.dataobject.ProductCategory;
 
 import java.util.List;
 
+/**
+ * @author wangkai
+ */
 public interface CategoryService {
 
     ProductCategory findOne(Integer categoryId);

@@ -4,8 +4,8 @@ import lombok.Data;
 
 /**
  * http请求返回的最外层对象
- * Create By wangkai
- * 2017/11/21 18:49
+ * @author wangkai
+ * @date 2017/11/21 18:49
  */
 @Data
 public class ResultVO<T> {
