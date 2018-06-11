@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: root
-    url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false
+    username: triumphant%wangkai
+    password: end1pgdn3Q.
+    url: jdbc:mysql://triumphant.mysqldb.chinacloudapi.cn/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
     hibernate:
