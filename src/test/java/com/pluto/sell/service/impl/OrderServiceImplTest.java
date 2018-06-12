@@ -73,7 +73,7 @@ public class OrderServiceImplTest {
     public void cancel() throws Exception {
         OrderDTO orderDTO = orderService.findOne(ORDER_ID);
         OrderDTO result = orderService.cancel(orderDTO);
-        Assert.assertEquals(OrderStatusEnum.CANCLE.getCode(), result.getOrderStatus());
+        Assert.assertEquals(OrderStatusEnum.CANCEl.getCode(), result.getOrderStatus());
     }
 
     @Test

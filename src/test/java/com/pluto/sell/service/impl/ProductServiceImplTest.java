@@ -20,28 +20,28 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductInfoServiceImplTest {
+public class ProductServiceImplTest {
 
     @Autowired
-    private ProductServiceImpl productInfoService;
+    private ProductServiceImpl productService;
 
     @Test
     public void findOne() throws Exception {
-        ProductInfo productInfo = productInfoService.findOne("123456");
+        ProductInfo productInfo = productService.findOne("123456");
         Assert.assertEquals("123456", productInfo.getProductId());
     }
 
     @Test
     public void findAll() throws Exception {
         PageRequest pageRequest = new PageRequest(0, 3);
-        Page<ProductInfo> productInfoPage = productInfoService.findAll(pageRequest);
+        Page<ProductInfo> productInfoPage = productService.findAll(pageRequest);
         //System.out.println(productInfoPage.getTotalElements());
         Assert.assertNotEquals(0,productInfoPage.getSize());
     }
 
     @Test
     public void findUpAll() throws Exception {
-        List<ProductInfo> productInfoList = productInfoService.findUpAll();
+        List<ProductInfo> productInfoList = productService.findUpAll();
         Assert.assertNotEquals(0, productInfoList.size());
     }
 
@@ -56,8 +56,19 @@ public class ProductInfoServiceImplTest {
         productInfo.setProductIcon("http://*****.png");
         productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
         productInfo.setCategoryType(2);
-        ProductInfo result = productInfoService.save(productInfo);
+        ProductInfo result = productService.save(productInfo);
         Assert.assertNotNull(result);
     }
 
+    @Test
+    public void onSale(){
+        ProductInfo result = productService.onSale("123456");
+        Assert.assertEquals(ProductStatusEnum.UP,result.getProductStatusEnum());
+    }
+
+    @Test
+    public void offSale(){
+        ProductInfo result = productService.offSale("123456");
+        Assert.assertEquals(ProductStatusEnum.DOWN,result.getProductStatusEnum());
+    }
 }

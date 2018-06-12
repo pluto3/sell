@@ -99,7 +99,7 @@ public class OrderServiceImpl implements OrderService {
         }
         List<OrderDetail> orderDetailList = orderDetailRepository.findByOrderId(orderId);
         if(CollectionUtils.isEmpty(orderDetailList)){
-            throw new SellException(ResultEnum.ORDERDETIAL_NOT_EXIST);
+            throw new SellException(ResultEnum.ORDER_DETAIL_NOT_EXIST);
         }
 
         OrderDTO orderDTO = new OrderDTO();
@@ -125,7 +125,7 @@ public class OrderServiceImpl implements OrderService {
             throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
         }
         //修改订单状态
-        orderMaster.setOrderStatus(OrderStatusEnum.CANCLE.getCode());
+        orderMaster.setOrderStatus(OrderStatusEnum.CANCEl.getCode());
         OrderMaster updateResult = orderMasterRepository.save(orderMaster);
         if(updateResult == null){
             log.error("【取消订单】更新失败,orderMaster{}",orderMaster);

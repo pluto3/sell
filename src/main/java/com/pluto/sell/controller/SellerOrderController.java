@@ -42,6 +42,7 @@ public class SellerOrderController {
         Page<OrderDTO> orderDTOPage = orderService.findList(pageRequest);
         map.put("currentPage", page);
         map.put("orderDTOPage", orderDTOPage);
+        map.put("size", size);
         return new ModelAndView("order/list", map);
     }
 
@@ -51,11 +52,11 @@ public class SellerOrderController {
      * @param orderId
      * @return
      */
-    @GetMapping("/cancle")
-    public ModelAndView cancle(String orderId, Map<String, Object> map) {
+    @GetMapping("/cancel")
+    public ModelAndView cancel(String orderId, Map<String, Object> map) {
         try {
             OrderDTO orderDTO = orderService.findOne(orderId);
-            OrderDTO cancel = orderService.cancel(orderDTO);
+            orderService.cancel(orderDTO);
         } catch (SellException e) {
             e.printStackTrace();
             log.error("【卖家端取消订单】发生异常");
@@ -63,7 +64,7 @@ public class SellerOrderController {
             map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/error", map);
         }
-        map.put("msg", ResultEnum.ORDER_CANCLE_SUCCESS.getMsg());
+        map.put("msg", ResultEnum.ORDER_CANCEL_SUCCESS.getMsg());
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success");
     }
@@ -87,5 +88,28 @@ public class SellerOrderController {
         }
         map.put("orderDTO",orderDTO);
         return new ModelAndView("order/detail",map);
+    }
+
+    /**
+     * 完结订单
+     *
+     * @param orderId
+     * @return
+     */
+    @GetMapping("/finish")
+    public ModelAndView finish(String orderId, Map<String, Object> map) {
+        try {
+            OrderDTO orderDTO = orderService.findOne(orderId);
+            orderService.finish(orderDTO);
+        } catch (SellException e) {
+            e.printStackTrace();
+            log.error("【卖家端完结订单】发生异常");
+            map.put("msg", e.getMessage());
+            map.put("url", "/sell/seller/order/list");
+            return new ModelAndView("common/error", map);
+        }
+        map.put("msg", ResultEnum.ORDER_CANCEL_SUCCESS.getMsg());
+        map.put("url", "/sell/seller/order/list");
+        return new ModelAndView("common/success");
     }
 }
