@@ -6,6 +6,7 @@ import com.pluto.sell.exception.SellException;
 import com.pluto.sell.form.ProductForm;
 import com.pluto.sell.service.CategoryService;
 import com.pluto.sell.service.ProductService;
+import com.pluto.sell.utils.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -127,8 +128,14 @@ public class SellerProductController {
             map.put("url","/sell/seller/product/index");
             return new ModelAndView("common/error", map);
         }
+        ProductInfo productInfo = new ProductInfo();
         try {
-            ProductInfo productInfo = productService.findOne(form.getProductId());
+            // 如果商品id不为空 则是修改
+            if(!StringUtils.isEmpty(form.getProductId())){
+                productInfo = productService.findOne(form.getProductId());
+            }else{
+                form.setProductId(KeyUtil.genUniqueKey());
+            }
             BeanUtils.copyProperties(form,productInfo);
             productService.save(productInfo);
         } catch (SellException e) {

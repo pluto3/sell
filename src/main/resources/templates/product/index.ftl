@@ -41,14 +41,14 @@
                             <select name="categoryType" class="form-control">
                                 <#list categoryList as category>
                                     <option value="${category.categoryType}"
-                                    <#if productInfo.categoryType??&&productInfo.categoryType==category.categoryType >
+                                    <#if (productInfo.categoryType)??&&productInfo.categoryType==category.categoryType >
                                         selected
                                     </#if>
                                     >${category.categoryName}</option>
                                 </#list>
                             </select>
                         </div>
-                        <input hidden type="text" name="productId" value="${productInfo.productId}">
+                        <input hidden type="text" name="productId" value="${(productInfo.productId)!''}">
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>
                 </div>
