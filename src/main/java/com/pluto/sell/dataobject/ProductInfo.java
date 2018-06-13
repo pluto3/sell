@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pluto.sell.enums.ProductStatusEnum;
 import com.pluto.sell.utils.EnumUtil;
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +19,7 @@ import java.util.Date;
  */
 @Entity
 @Data
-@DynamicUpdate
+@DynamicInsert
 public class ProductInfo {
 
     @Id
@@ -71,7 +71,7 @@ public class ProductInfo {
     private Date updateTime;
 
     @JsonIgnore
-    public ProductStatusEnum getProductStatusEnum(){
-        return EnumUtil.getByCode(productStatus,ProductStatusEnum.class);
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
     }
 }

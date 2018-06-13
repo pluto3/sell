@@ -3,10 +3,9 @@ package com.pluto.sell.dataobject;
 import com.pluto.sell.enums.OrderStatusEnum;
 import com.pluto.sell.enums.PayStatusEnum;
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.math.BigDecimal;
@@ -20,7 +19,7 @@ import java.util.List;
  */
 @Entity
 @Data
-@DynamicUpdate
+@DynamicInsert
 public class OrderMaster {
     /** 订单id. */
     @Id
