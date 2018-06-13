@@ -7,6 +7,7 @@ import com.pluto.sell.form.ProductForm;
 import com.pluto.sell.service.CategoryService;
 import com.pluto.sell.service.ProductService;
 import com.pluto.sell.utils.KeyUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,7 +31,8 @@ import java.util.Map;
  * @author wangkai
  */
 @Controller
-@RequestMapping("seller/product")
+@RequestMapping("/seller/product")
+@Slf4j
 public class SellerProductController {
     @Autowired
     private ProductService productService;
@@ -114,6 +116,7 @@ public class SellerProductController {
 
     /**
      * 保存/更新
+     *
      * @param form
      * @param bindingResult
      * @param map
@@ -122,28 +125,29 @@ public class SellerProductController {
     @PostMapping("/save")
     public ModelAndView save(@Valid ProductForm form,
                              BindingResult bindingResult,
-                             Map<String, Object> map){
-        if(bindingResult.hasErrors()){
-            map.put("msg",bindingResult.getFieldError().getDefaultMessage());
-            map.put("url","/sell/seller/product/index");
+                             Map<String, Object> map) {
+        if (bindingResult.hasErrors()) {
+            log.error("【新建或更新商品】" + bindingResult.getFieldError().getDefaultMessage() + ",ProductForm{}", form);
+            map.put("msg", "请输入正确的信息");
+            map.put("url", "/sell/seller/product/index");
             return new ModelAndView("common/error", map);
         }
         ProductInfo productInfo = new ProductInfo();
         try {
             // 如果商品id不为空 则是修改
-            if(!StringUtils.isEmpty(form.getProductId())){
+            if (!StringUtils.isEmpty(form.getProductId())) {
                 productInfo = productService.findOne(form.getProductId());
-            }else{
+            } else {
                 form.setProductId(KeyUtil.genUniqueKey());
             }
-            BeanUtils.copyProperties(form,productInfo);
+            BeanUtils.copyProperties(form, productInfo);
             productService.save(productInfo);
         } catch (SellException e) {
-            map.put("msg",e.getMessage());
-            map.put("url","/sell/seller/product/index");
+            map.put("msg", e.getMessage());
+            map.put("url", "/sell/seller/product/index");
             return new ModelAndView("common/error", map);
         }
-        map.put("url","/sell/seller/product/list");
+        map.put("url", "/sell/seller/product/list");
         return new ModelAndView("common/success", map);
     }
 }
